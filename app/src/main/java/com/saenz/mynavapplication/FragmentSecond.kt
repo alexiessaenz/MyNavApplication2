@@ -9,13 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import com.saenz.mynavapplication.databinding.FragmentFirstBinding
 import com.saenz.mynavapplication.databinding.FragmentSecondBinding
+import com.saenz.mynavapplication.Counter
 
 /**
  * A simple [Fragment] subclass.
  */
 class FragmentSecond : Fragment() {
 
-    //var choise = Choose{"option",0}
+
 
 
     override fun onCreateView(
@@ -24,7 +25,10 @@ class FragmentSecond : Fragment() {
     ): View? {
         var binding = DataBindingUtil.inflate<FragmentSecondBinding>(inflater, R.layout.fragment_second, container, false)
 
+
         binding.btNext.setOnClickListener { view: View ->
+            var button=binding.radioGroup.checkedRadioButtonId
+            binding.option.name = button.toString()
             view.findNavController().navigate(R.id.action_fragmentSecond_to_fragmentThird)
         }
 
